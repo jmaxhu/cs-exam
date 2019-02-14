@@ -7,7 +7,7 @@
     * [磁盘调度算法](fundation/os/hd_head_move.md)
     * [进程控制块(PCB)](fundation/os/hd_head_move.md)
     * [文件系统](fundation/os/fs.md)
-  * [数据库](fudation/db/index.md)
+  * [数据库](fundation/db/index.md)
     * [关系代数](fundation/db/e-r.md)
-    * [商业智能和数据仓库](fudation/db/warehouse.md)
+    * [商业智能和数据仓库](fundation/db/warehouse.md)
 
