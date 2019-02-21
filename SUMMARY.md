@@ -10,5 +10,6 @@
   * [数据库](fundation/db/index.md)
     * [关系代数](fundation/db/e-r.md)
     * [商业智能和数据仓库](fundation/db/warehouse.md)
-  * [网络](fundation/network.md)
+  * [网络](fundation/network/index.md)
+    * [协议](fundation/network/protocol.md)
 
