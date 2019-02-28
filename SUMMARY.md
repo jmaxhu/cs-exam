@@ -12,4 +12,5 @@
     * [商业智能和数据仓库](fundation/db/warehouse.md)
   * [网络](fundation/network/index.md)
     * [协议](fundation/network/protocol.md)
-
+* [信息系统基础知识](info-sys/index.md)
+* [软件开发基础知识](sys-dev/index.md)
