@@ -12,6 +12,23 @@
 
 ![](./imgs/simple_factory.png)
 
+```java
+public class ImageReaderFactory {
+  public static ImageReader imageReaderFactoryMethod(InputStream is) {
+    ImageReader product = null;
+    int imageType = determineImageType(is);
+    switch(imageType) {
+      case ImageReaderFactory.GIF:
+        product = new GifReader(is);
+      case ImageReaderFactory.JPEG:
+        product = new JpegReader(is);
+      // ...
+    }
+    return product;
+  }
+}
+```
+
 ### 要点
 
 当你需要什么，只需要传入正确的参数，就可以获取你需要的对象，无须知道其创建细节。
@@ -22,7 +39,7 @@
 
 ## 工厂方法(Factory Method Pattern)
 
-工厂方法模式也叫多态工厂模式。该模式不再设计一个工厂来统一负责所有产品的创建，而是将具体的创建过程交给专门的工厂子类去完成。这样可以将产品类的实例化操作延迟到工厂子类中完成。包含4个角色：
+工厂方法模式也叫多态工厂模式。该模式不再设计一个工厂来统一负责所有产品的创建，而是将具体的创建过程交给专门的工厂子类去完成。这样可以将产品类的实例化操作延迟到工厂子类中完成。包含 4 个角色：
 
 1. Product 抽象产品
 2. ConcreteProduct 具体产品
@@ -31,8 +48,32 @@
 
 ![](./imgs/factory_method.png)
 
+### 示例代码
+
+```java
+// Products
+public calss Button {}
+public class WinButton extends Button {}
+public class MacButton extends Button {}
+
+// Factory
+public interface ButtonFactory {
+  Button createButton();
+}
+public class WinButtonFactory implements ButtonFactory {
+  public Button createButton() {
+    return new BinButton();
+  }
+}
+public class MacButtonFactory implements ButtonFactory {
+  public Button createButton() {
+    return new MacButton();
+  }
+}
+```
+
 工厂方法模式是简单工厂模式的进一步的抽象和推广。核心的工厂类不再负责所有产品的创建，它仅仅负责给出具体工厂必须实现的接口，而不负责哪一个产品类被实例化这种细节，这使得工厂方法模式可以允许系统在不修改工厂角色的情况下引进新产口。
- 
+
 ### 实例
 
 ![](./imgs/factory_method_ex.png)
@@ -45,7 +86,7 @@
 
 ## 抽象工厂模式(Abstract Factory Pattern)
 
-抽象工厂模式提供一个创建一系统相关或相互依赖对象的接口，而无须指定它们具体的类。抽象工厂模式又称为Kit模式。
+抽象工厂模式提供一个创建一系列相关或相互依赖对象的接口，而无须指定它们具体的类。抽象工厂模式又称为 Kit 模式。
 
 在工厂模式中一个具体工厂对应一种具体的产品，具有唯一性。而抽象工厂模式中一个具体工厂可以对应多种具体的产品(产品族）。具体角色：
 
@@ -55,6 +96,43 @@
 4. ConcreteProduct 具体产品
 
 ![](./imgs/abstract_factory.png)
+
+### 示例
+
+```java
+// Products
+public interface Button {}
+public interface Border {}
+
+public class MacButton implements Button {}
+public class WinButton implements Button {}
+public class MacBorder implements Border {}
+public class WinBorder implements Border {}
+
+// Factory
+public interface GUIFactory {
+  Button createButton();
+  Border createBorder();
+}
+
+public class WinFactory implements GUIFactory {
+  public Button createButton() {
+    return new WinButton();
+  }
+  public Border createBorder() {
+    return new WinBorder();
+  }
+}
+
+public class MacFactory implements GUIFactory {
+  public Button createButton() {
+    return new MacButton();
+  }
+  public Border createBorder() {
+    return new MacBorder();
+  }
+}
+```
 
 ### 优缺点
 
